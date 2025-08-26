@@ -1,0 +1,15 @@
+igaming:
+  outputs:
+    dev_postgres:
+      type: postgres
+      host: localhost
+      user: igaming
+      password: example
+      port: 5432
+      dbname: igaming
+      schema: public
+    dev_duckdb:
+      type: duckdb
+      path: duckdb/igaming.duckdb
+      schema: main
+  target: dev_duckdb

@@ -1,0 +1,6 @@
+player_id,registration_date,segment,vip_tier,country
+1,2024-01-10,new,bronze,ZA
+2,2024-03-03,returning,silver,ZA
+3,2023-11-22,active,gold,GB
+4,2024-06-15,new,bronze,NG
+5,2023-12-01,active,platinum,ZA

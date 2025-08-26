@@ -1,0 +1,13 @@
+site_name: iGaming Data Platform Starter
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Datasets: datasets.md
+  - Quickstart: quickstart.md
+  - Local Demo: local.md

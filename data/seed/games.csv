@@ -1,0 +1,5 @@
+game_id,game_type,provider,league,market
+10,sports,bet365,Premier League,FT Result
+11,casino,netent,,Starburst
+12,poker,internal,,Texas Hold'em
+13,virtual,internal,,Virtual Football
