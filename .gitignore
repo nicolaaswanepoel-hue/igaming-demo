@@ -1,0 +1,32 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Env & secrets
+.env
+.env.*
+*.yaml.secrets
+*.json.secrets
+
+# Node / build (in case)
+node_modules/
+dist/
+build/
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Project data
+data/tmp/
+.parquet_tmp/
