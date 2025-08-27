@@ -18,42 +18,42 @@ This write-up proposes a modern, cost-efficient, multi-cloud capable data platfo
 ```mermaid
 flowchart LR
   subgraph Sources
-    SQL[(SQL Server\nOLTP)]
-    KAFKA[(Kafka Topics\nbets, results, logins)]
-    FILES[(File Drops\nCSV/JSON)]
+    SQL[(SQL Server<br/>OLTP)]
+    KAFKA[(Kafka Topics<br/>bets, results, logins)]
+    FILES[(File Drops<br/>CSV/JSON)]
   end
 
   subgraph Ingest
-    DMS[CDC Connector\n(Debezium/Datastream/DMS)]
-    STRM[Streaming ETL\n(Dataflow/Spark/KDA/ASA)]
-    LAND[Object Store Landing\nGCS/S3/ADLS]
+    DMS[CDC Connector<br/>(Debezium/Datastream/DMS)]
+    STRM[Streaming ETL<br/>(Dataflow/Spark/KDA/ASA)]
+    LAND[Object Store Landing<br/>GCS/S3/ADLS]
   end
 
   subgraph Lakehouse
-    BRONZE[(Bronze\nraw, append-only)]
-    SILVER[(Silver\ncleaned, conformed)]
-    GOLD[(Gold\ncurated marts)]
-    CATALOG[(Unified Metastore\nGlue/Purview/Dataplex)]
-    TABLEFMT[(Table Format\nDelta/Iceberg/Hudi)]
+    BRONZE[(Bronze<br/>raw, append-only)]
+    SILVER[(Silver<br/>cleaned, conformed)]
+    GOLD[(Gold<br/>curated marts)]
+    CATALOG[(Unified Metastore<br/>Glue/Purview/Dataplex)]
+    TABLEFMT[(Table Format<br/>Delta/Iceberg/Hudi)]
   end
 
   subgraph Warehouse & Compute
     WH[(BigQuery/Redshift/Synapse)]
-    DBT[dbt Core\nELT + metrics]
+    DBT[dbt Core<br/>ELT + metrics]
     FEAT[(Feature Store)]
   end
 
   subgraph Serving
     BI[BI: Looker/QuickSight/Power BI/Metabase]
-    API[(Low-latency APIs\nvia cached views/\nmaterializations)]
+    API[(Low-latency APIs<br/>cached views/materializations)]
   end
 
   subgraph Governance & Ops
-    ORCH[Orchestration\n(Cloud Composer/Airflow/\nADF/Step Functions)]
+    ORCH[Orchestration<br/>(Airflow/ADF/Step Functions)]
     DCAT[Data Catalog + Lineage]
     SEC[PII Vault + KMS + DLP]
-    SCHEMA[Schema Registry &\nData Contracts]
-    OBS[Monitoring & Cost\n(Cloud Monitoring,\nFinOps)]
+    SCHEMA[Schema Registry + Data Contracts]
+    OBS[Monitoring + Cost<br/>(FinOps)]
   end
 
   SQL --> DMS --> LAND
@@ -70,12 +70,11 @@ flowchart LR
   CATALOG --- SILVER
   CATALOG --- GOLD
   TABLEFMT --- BRONZE
-  ORCH --> {Jobs}
+  ORCH --> OBS
   SEC --- LAND
   SEC --- WH
   DCAT --- WH
   SCHEMA --- KAFKA
-  OBS --> ORCH
 ```
 
 ### Why these components?
