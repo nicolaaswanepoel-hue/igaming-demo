@@ -18,3 +18,6 @@ make compact   # optional
 make dbt
 make docs
 ```
+
+
+> 👉 **Live docs:** https://<your-username>.github.io/igaming-demo/

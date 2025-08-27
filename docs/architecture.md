@@ -1,19 +1,11 @@
 # Architecture
+
 ```mermaid
 flowchart LR
-  subgraph Sources
-    SQL[(SQL Source)]
-    KAFKA([Kafka / Redpanda])
-    FILES[[Provider CSV/JSON]]
-  end
-
-  SQL -->|CDC| RAW[(Object Storage: s3://raw)]
-  KAFKA -->|Stream| RAW
-  FILES --> RAW
-
-  RAW --> SILVER[(Clean/Conformed)]
-  SILVER --> GOLD[(Curated Marts)]
-  GOLD --> BI[BI / Dashboards]
-  GOLD --> DS[Feature Store / ML]
-  GOLD --> REG[Regulatory / Audited]
-```
+  A[Generator\n(generate_bets.py)] -->|JSON events| B((Redpanda\nKafka))
+  B --> C[Consumer → Postgres\nkafka_to_postgres.py]
+  B --> D[Mirror → MinIO (JSON/JSONL)\nkafka_to_minio*.py]
+  D --> E[Compaction → Parquet\ncompact_parquet.py]
+  C --> F[dbt models\nstg_bets, fact_bet, daily_game_metrics]
+  F --> G[Metabase]
+  E --> H[DuckDB (ad-hoc)]
