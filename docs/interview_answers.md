@@ -300,6 +300,182 @@ ORDER BY pct_increase_overall DESC NULLS LAST, streak_len DESC;
 - Sensitive attributes go in a **restricted PII schema**; use tokenization and **row-level security** so analysts only see anonymized joins.
 - Store currency amounts in **minor units** with a separate `fx_rate` table if multi-currency.
 
+**example** 
+```mermaid
+erDiagram
+  DIM_PLAYER ||--o{ FACT_BET : player_sk
+  DIM_PLAYER ||--o{ FACT_PAYMENT : player_sk
+  DIM_PLAYER ||--o{ FACT_BONUS_EVENT : player_sk
+  DIM_PLAYER ||--o{ FACT_SESSION : player_sk
+  DIM_PLAYER ||--o{ FACT_CAMPAIGN_ATTRIB : player_sk
+
+  DIM_GAME ||--o{ FACT_BET : game_sk
+  DIM_TIME ||--o{ FACT_BET : time_sk
+  DIM_TIME ||--o{ FACT_PAYMENT : time_sk
+  DIM_TIME ||--o{ FACT_BONUS_EVENT : time_sk
+  DIM_TIME ||--o{ FACT_CAMPAIGN_ATTRIB : time_sk
+  DIM_DEVICE ||--o{ FACT_SESSION : device_sk
+
+  DIM_COUNTRY ||--o{ FACT_BET : country_sk
+  DIM_COUNTRY ||--o{ FACT_PAYMENT : country_sk
+
+  DIM_CAMPAIGN ||--o{ FACT_BONUS_EVENT : campaign_sk
+  DIM_CAMPAIGN ||--o{ FACT_CAMPAIGN_ATTRIB : campaign_sk
+
+  DIM_AFFILIATE ||--o{ DIM_PLAYER : affiliate_sk
+  DIM_PAYMENT_METHOD ||--o{ FACT_PAYMENT : payment_method_sk
+
+  DIM_PLAYER ||--|| DIM_PLAYER_PII : player_sk
+
+  DIM_PLAYER {
+    INT64 player_sk
+    STRING player_id
+    TIMESTAMP registration_ts
+    STRING vip_status
+    STRING risk_segment
+    STRING kyc_status
+    STRING rg_flags
+    INT64 country_sk
+    INT64 affiliate_sk
+    TIMESTAMP valid_from
+    TIMESTAMP valid_to
+    BOOL is_current
+  }
+
+  DIM_PLAYER_PII {
+    INT64 player_sk
+    STRING email_hash
+    STRING phone_hash
+    DATE dob
+    STRING full_name_hash
+  }
+
+  DIM_GAME {
+    INT64 game_sk
+    STRING game_id
+    STRING game_type
+    STRING provider
+    STRING sport_code
+    STRING league
+    STRING market_type
+    STRING volatility_band
+    DATE release_date
+  }
+
+  DIM_TIME {
+    INT64 time_sk
+    DATE d
+    INT64 day_of_week
+    STRING day_name
+    INT64 week_of_year
+    INT64 month
+    STRING month_name
+    INT64 quarter
+    INT64 year
+    INT64 fiscal_year
+    INT64 fiscal_quarter
+    BOOL is_weekend
+  }
+
+  DIM_COUNTRY {
+    INT64 country_sk
+    STRING iso_code
+    STRING country_name
+    STRING regulator
+    STRING jurisdiction_code
+  }
+
+  DIM_CAMPAIGN {
+    INT64 campaign_sk
+    STRING campaign_id
+    STRING channel
+    STRING offer_type
+    TIMESTAMP start_ts
+    TIMESTAMP end_ts
+    INT64 wagering_req
+  }
+
+  DIM_AFFILIATE {
+    INT64 affiliate_sk
+    STRING affiliate_id
+    STRING partner_tier
+  }
+
+  DIM_DEVICE {
+    INT64 device_sk
+    STRING os
+    STRING form_factor
+    STRING app_version
+  }
+
+  DIM_PAYMENT_METHOD {
+    INT64 payment_method_sk
+    STRING method_name
+  }
+
+  FACT_BET {
+    STRING bet_id
+    INT64 player_sk
+    INT64 game_sk
+    INT64 time_sk
+    INT64 country_sk
+    INT64 affiliate_sk
+    INT64 campaign_sk
+    STRING channel
+    NUMERIC stake
+    FLOAT64 odds
+    STRING status
+    NUMERIC actual_win
+    STRING currency
+    TIMESTAMP placed_ts
+    TIMESTAMP settled_ts
+  }
+
+  FACT_PAYMENT {
+    STRING payment_id
+    INT64 player_sk
+    INT64 time_sk
+    INT64 country_sk
+    INT64 payment_method_sk
+    STRING direction
+    NUMERIC amount
+    STRING status
+    STRING currency
+    TIMESTAMP ts
+  }
+
+  FACT_BONUS_EVENT {
+    STRING bonus_event_id
+    INT64 player_sk
+    INT64 campaign_sk
+    INT64 time_sk
+    STRING event_type
+    NUMERIC amount
+    TIMESTAMP ts
+  }
+
+  FACT_SESSION {
+    STRING session_id
+    INT64 player_sk
+    INT64 device_sk
+    TIMESTAMP start_ts
+    TIMESTAMP end_ts
+    INT64 duration_s
+    INT64 games_played
+    NUMERIC net_ggr
+  }
+
+  FACT_CAMPAIGN_ATTRIB {
+    STRING attrib_id
+    INT64 player_sk
+    INT64 campaign_sk
+    INT64 time_sk
+    STRING channel
+    FLOAT64 attrib_weight
+    TIMESTAMP attrib_ts
+  }
+```
+
 ---
 
 ### 2) Star vs Snowflake – Trade-offs for iGaming
