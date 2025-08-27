@@ -11,3 +11,7 @@ flowchart LR
   E --> H["DuckDB (ad-hoc)"]
 
 ```
+
+## Dashboard Snapshot
+
+![Bets Summary](assets/charts/bets_summary.png)

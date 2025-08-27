@@ -2659,3 +2659,424 @@ There are 2 unused configuration paths:
 [0m11:41:23.133951 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a593442630>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a594011700>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73a593e00800>]}
 [0m11:41:23.134448 [debug] [MainThread]: Flushing usage events
 [0m11:41:23.863173 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:55:50.471544 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b7188aaf9b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b7188aaf860>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b7188aaf920>]}
+
+
+============================== 12:55:50.476624 | efef72ea-5534-46b6-9577-55fe73cc4468 ==============================
+[0m12:55:50.476624 [info ] [MainThread]: Running with dbt=1.9.0
+[0m12:55:50.477404 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/mnt/c/Users/Waslap/Documents/Repos/igaming-demo/transformations/dbt_project', 'debug': 'False', 'warn_error': 'None', 'log_path': '/mnt/c/Users/Waslap/Documents/Repos/igaming-demo/transformations/dbt_project/logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt run', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m12:55:50.653561 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b718882c7a0>]}
+[0m12:55:50.682414 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b71889cb5c0>]}
+[0m12:55:50.686218 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m12:55:50.744241 [debug] [MainThread]: checksum: c99e828bba267739642b5a3ce85f17518764ea526e0e6c4fdc649171c1a66bff, vars: {}, profile: , target: , version: 1.9.0
+[0m12:55:50.856897 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m12:55:50.857420 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m12:55:50.860268 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.igaming_dbt.marts
+- models.igaming_dbt.staging
+[0m12:55:50.873371 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b7187ff30b0>]}
+[0m12:55:50.909176 [debug] [MainThread]: Wrote artifact WritableManifest to /mnt/c/Users/Waslap/Documents/Repos/igaming-demo/transformations/dbt_project/target/manifest.json
+[0m12:55:50.927501 [debug] [MainThread]: Wrote artifact SemanticManifest to /mnt/c/Users/Waslap/Documents/Repos/igaming-demo/transformations/dbt_project/target/semantic_manifest.json
+[0m12:55:50.949529 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b7186b13170>]}
+[0m12:55:50.950163 [info ] [MainThread]: Found 4 models, 3 sources, 434 macros
+[0m12:55:50.950722 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b7186ff4260>]}
+[0m12:55:50.951999 [info ] [MainThread]: 
+[0m12:55:50.952522 [info ] [MainThread]: Concurrency: 4 threads (target='dev_postgres')
+[0m12:55:50.953015 [info ] [MainThread]: 
+[0m12:55:50.953622 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m12:55:50.955969 [debug] [ThreadPool]: Acquiring new postgres connection 'list_igaming'
+[0m12:55:50.996117 [debug] [ThreadPool]: Using postgres connection "list_igaming"
+[0m12:55:50.996799 [debug] [ThreadPool]: On list_igaming: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "connection_name": "list_igaming"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m12:55:50.997273 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m12:55:51.015891 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.019 seconds
+[0m12:55:51.016926 [debug] [ThreadPool]: On list_igaming: Close
+[0m12:55:51.018034 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_igaming, now list_igaming_public)
+[0m12:55:51.021248 [debug] [ThreadPool]: Using postgres connection "list_igaming_public"
+[0m12:55:51.021799 [debug] [ThreadPool]: On list_igaming_public: BEGIN
+[0m12:55:51.022311 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m12:55:51.026219 [debug] [ThreadPool]: SQL status: BEGIN in 0.004 seconds
+[0m12:55:51.026780 [debug] [ThreadPool]: Using postgres connection "list_igaming_public"
+[0m12:55:51.027277 [debug] [ThreadPool]: On list_igaming_public: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "connection_name": "list_igaming_public"} */
+select
+      'igaming' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'igaming' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'igaming' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m12:55:51.029406 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.002 seconds
+[0m12:55:51.030437 [debug] [ThreadPool]: On list_igaming_public: ROLLBACK
+[0m12:55:51.031086 [debug] [ThreadPool]: On list_igaming_public: Close
+[0m12:55:51.033728 [debug] [MainThread]: Using postgres connection "master"
+[0m12:55:51.034218 [debug] [MainThread]: On master: BEGIN
+[0m12:55:51.034686 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:55:51.038513 [debug] [MainThread]: SQL status: BEGIN in 0.004 seconds
+[0m12:55:51.039065 [debug] [MainThread]: Using postgres connection "master"
+[0m12:55:51.039550 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m12:55:51.042406 [debug] [MainThread]: SQL status: SELECT 4 in 0.002 seconds
+[0m12:55:51.043738 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b71863b7890>]}
+[0m12:55:51.044251 [debug] [MainThread]: On master: ROLLBACK
+[0m12:55:51.044829 [debug] [MainThread]: Using postgres connection "master"
+[0m12:55:51.045271 [debug] [MainThread]: On master: BEGIN
+[0m12:55:51.045948 [debug] [MainThread]: SQL status: BEGIN in 0.000 seconds
+[0m12:55:51.046411 [debug] [MainThread]: On master: COMMIT
+[0m12:55:51.046949 [debug] [MainThread]: Using postgres connection "master"
+[0m12:55:51.047397 [debug] [MainThread]: On master: COMMIT
+[0m12:55:51.047961 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m12:55:51.048414 [debug] [MainThread]: On master: Close
+[0m12:55:51.050140 [debug] [Thread-1 (]: Began running node model.igaming_dbt.daily_game_metrics
+[0m12:55:51.050361 [debug] [Thread-2 (]: Began running node model.igaming_dbt.example_top5
+[0m12:55:51.050578 [debug] [Thread-3 (]: Began running node model.igaming_dbt.fact_bet
+[0m12:55:51.050849 [debug] [Thread-4 (]: Began running node model.igaming_dbt.stg_bets
+[0m12:55:51.051209 [info ] [Thread-1 (]: 1 of 4 START sql view model public.daily_game_metrics .......................... [RUN]
+[0m12:55:51.051753 [info ] [Thread-2 (]: 2 of 4 START sql view model public.example_top5 ................................ [RUN]
+[0m12:55:51.052300 [info ] [Thread-3 (]: 3 of 4 START sql view model public.fact_bet .................................... [RUN]
+[0m12:55:51.052839 [info ] [Thread-4 (]: 4 of 4 START sql view model public.stg_bets .................................... [RUN]
+[0m12:55:51.053357 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_igaming_public, now model.igaming_dbt.daily_game_metrics)
+[0m12:55:51.053892 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.igaming_dbt.example_top5'
+[0m12:55:51.054425 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.igaming_dbt.fact_bet'
+[0m12:55:51.055073 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.igaming_dbt.stg_bets'
+[0m12:55:51.055574 [debug] [Thread-1 (]: Began compiling node model.igaming_dbt.daily_game_metrics
+[0m12:55:51.056090 [debug] [Thread-2 (]: Began compiling node model.igaming_dbt.example_top5
+[0m12:55:51.056614 [debug] [Thread-3 (]: Began compiling node model.igaming_dbt.fact_bet
+[0m12:55:51.057104 [debug] [Thread-4 (]: Began compiling node model.igaming_dbt.stg_bets
+[0m12:55:51.060325 [debug] [Thread-1 (]: Writing injected SQL for node "model.igaming_dbt.daily_game_metrics"
+[0m12:55:51.061338 [debug] [Thread-2 (]: Writing injected SQL for node "model.igaming_dbt.example_top5"
+[0m12:55:51.062372 [debug] [Thread-3 (]: Writing injected SQL for node "model.igaming_dbt.fact_bet"
+[0m12:55:51.063444 [debug] [Thread-4 (]: Writing injected SQL for node "model.igaming_dbt.stg_bets"
+[0m12:55:51.066011 [debug] [Thread-1 (]: Began executing node model.igaming_dbt.daily_game_metrics
+[0m12:55:51.066250 [debug] [Thread-4 (]: Began executing node model.igaming_dbt.stg_bets
+[0m12:55:51.072034 [debug] [Thread-3 (]: Began executing node model.igaming_dbt.fact_bet
+[0m12:55:51.072276 [debug] [Thread-2 (]: Began executing node model.igaming_dbt.example_top5
+[0m12:55:51.083589 [debug] [Thread-1 (]: Writing runtime sql for node "model.igaming_dbt.daily_game_metrics"
+[0m12:55:51.085169 [debug] [Thread-4 (]: Writing runtime sql for node "model.igaming_dbt.stg_bets"
+[0m12:55:51.087829 [debug] [Thread-3 (]: Writing runtime sql for node "model.igaming_dbt.fact_bet"
+[0m12:55:51.089506 [debug] [Thread-2 (]: Writing runtime sql for node "model.igaming_dbt.example_top5"
+[0m12:55:51.091962 [debug] [Thread-1 (]: Using postgres connection "model.igaming_dbt.daily_game_metrics"
+[0m12:55:51.092212 [debug] [Thread-3 (]: Using postgres connection "model.igaming_dbt.fact_bet"
+[0m12:55:51.092714 [debug] [Thread-1 (]: On model.igaming_dbt.daily_game_metrics: BEGIN
+[0m12:55:51.092974 [debug] [Thread-4 (]: Using postgres connection "model.igaming_dbt.stg_bets"
+[0m12:55:51.093200 [debug] [Thread-2 (]: Using postgres connection "model.igaming_dbt.example_top5"
+[0m12:55:51.093599 [debug] [Thread-3 (]: On model.igaming_dbt.fact_bet: BEGIN
+[0m12:55:51.094069 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:55:51.094553 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: BEGIN
+[0m12:55:51.095047 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: BEGIN
+[0m12:55:51.095513 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m12:55:51.096364 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m12:55:51.096857 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m12:55:51.100069 [debug] [Thread-1 (]: SQL status: BEGIN in 0.006 seconds
+[0m12:55:51.100595 [debug] [Thread-3 (]: SQL status: BEGIN in 0.005 seconds
+[0m12:55:51.101038 [debug] [Thread-4 (]: SQL status: BEGIN in 0.005 seconds
+[0m12:55:51.101335 [debug] [Thread-1 (]: Using postgres connection "model.igaming_dbt.daily_game_metrics"
+[0m12:55:51.101538 [debug] [Thread-2 (]: SQL status: BEGIN in 0.005 seconds
+[0m12:55:51.102076 [debug] [Thread-3 (]: Using postgres connection "model.igaming_dbt.fact_bet"
+[0m12:55:51.102600 [debug] [Thread-4 (]: Using postgres connection "model.igaming_dbt.stg_bets"
+[0m12:55:51.103147 [debug] [Thread-1 (]: On model.igaming_dbt.daily_game_metrics: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.daily_game_metrics"} */
+
+  create view "igaming"."public"."daily_game_metrics__dbt_tmp"
+    
+    
+  as (
+    with src as (
+  select
+    placed_at,                               -- unified timestamp from stg_bets
+    game_id,
+    player_id,
+    stake::double precision       as stake,
+    actual_win::double precision  as actual_win,
+    lower(status)                 as status
+  from stg_bets
+)
+select
+  date_trunc('day', placed_at)                                 as day,
+  game_id,
+  count(*)                                                      as bets,
+  sum(case when status = 'won'  then 1 else 0 end)             as wins,
+  sum(case when status = 'lost' then 1 else 0 end)             as losses,
+  sum(stake)                                                   as handle,
+  sum(coalesce(stake,0) - coalesce(actual_win,0))              as ggr,
+  avg(case when status='won' then 1.0 else 0.0 end)            as win_rate
+from src
+group by 1,2
+order by 1,2
+  );
+[0m12:55:51.103654 [debug] [Thread-2 (]: Using postgres connection "model.igaming_dbt.example_top5"
+[0m12:55:51.104145 [debug] [Thread-3 (]: On model.igaming_dbt.fact_bet: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.fact_bet"} */
+
+  create view "igaming"."public"."fact_bet__dbt_tmp"
+    
+    
+  as (
+    with b as (
+  select
+    bet_id,
+    player_id,
+    game_id,
+    placed_at,                         -- was bet_time
+    stake::double precision   as stake,
+    odds::double precision    as odds,
+    status,
+    actual_win::double precision as actual_win
+  from stg_bets
+)
+
+select
+  bet_id,
+  player_id,
+  game_id,
+  cast(placed_at as date) as bet_date, -- was bet_time
+  placed_at,
+  stake,
+  odds,
+  status,
+  actual_win
+from b
+  );
+[0m12:55:51.104667 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.stg_bets"} */
+
+  create view "igaming"."public"."stg_bets__dbt_tmp"
+    
+    
+  as (
+    -- models/stg_bets.sql
+with legacy as (
+  -- old CSV-loaded table, if present
+  select
+    bet_id::text                 as bet_id,
+    player_id::integer           as player_id,
+    game_id::integer             as game_id,
+    cast(bet_time as timestamp)  as placed_at,
+    stake::double precision      as stake,
+    odds::double precision       as odds,
+    lower(status::text)          as status,
+    actual_win::double precision as actual_win
+  from public.bets
+),
+stream as (
+  select
+    bet_id,
+    player_id,
+    game_id,
+    bet_time::timestamp          as placed_at,
+    stake,
+    odds,
+    lower(status)                as status,
+    actual_win
+  from public.bets_stream
+)
+select * from legacy
+union all
+select * from stream
+  );
+[0m12:55:51.105520 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.example_top5"} */
+
+  create view "igaming"."public"."example_top5__dbt_tmp"
+    
+    
+  as (
+    -- Top 5 players by total bet in last 30 days per game_type (joins games)
+with last_30 as (
+  select b.player_id, g.game_type, sum(b.stake) total_bet
+  from public.bets b
+  join public.games g using(game_id)
+  where b.bet_time >= (current_date - interval '30 day')
+  group by 1,2
+),
+ranked as (
+  select *, row_number() over(partition by game_type order by total_bet desc) rn
+  from last_30
+)
+select * from ranked where rn <= 5 order by game_type, total_bet desc
+  );
+[0m12:55:51.115288 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.009 seconds
+[0m12:55:51.115514 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.009 seconds
+[0m12:55:51.115743 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.009 seconds
+[0m12:55:51.115967 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.011 seconds
+[0m12:55:51.119715 [debug] [Thread-3 (]: Using postgres connection "model.igaming_dbt.fact_bet"
+[0m12:55:51.121672 [debug] [Thread-2 (]: Using postgres connection "model.igaming_dbt.example_top5"
+[0m12:55:51.123505 [debug] [Thread-4 (]: Using postgres connection "model.igaming_dbt.stg_bets"
+[0m12:55:51.125049 [debug] [Thread-1 (]: Using postgres connection "model.igaming_dbt.daily_game_metrics"
+[0m12:55:51.125540 [debug] [Thread-3 (]: On model.igaming_dbt.fact_bet: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.fact_bet"} */
+alter table "igaming"."public"."fact_bet__dbt_tmp" rename to "fact_bet"
+[0m12:55:51.126039 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.example_top5"} */
+alter table "igaming"."public"."example_top5" rename to "example_top5__dbt_backup"
+[0m12:55:51.126525 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.stg_bets"} */
+alter table "igaming"."public"."stg_bets" rename to "stg_bets__dbt_backup"
+[0m12:55:51.127051 [debug] [Thread-1 (]: On model.igaming_dbt.daily_game_metrics: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.daily_game_metrics"} */
+alter table "igaming"."public"."daily_game_metrics__dbt_tmp" rename to "daily_game_metrics"
+[0m12:55:51.127883 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m12:55:51.128102 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m12:55:51.129065 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m12:55:51.135891 [debug] [Thread-3 (]: On model.igaming_dbt.fact_bet: COMMIT
+[0m12:55:51.137339 [debug] [Thread-2 (]: Using postgres connection "model.igaming_dbt.example_top5"
+[0m12:55:51.138259 [debug] [Thread-1 (]: On model.igaming_dbt.daily_game_metrics: COMMIT
+[0m12:55:51.138789 [debug] [Thread-3 (]: Using postgres connection "model.igaming_dbt.fact_bet"
+[0m12:55:51.139277 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.example_top5"} */
+alter table "igaming"."public"."example_top5__dbt_tmp" rename to "example_top5"
+[0m12:55:51.139765 [debug] [Thread-1 (]: Using postgres connection "model.igaming_dbt.daily_game_metrics"
+[0m12:55:51.140240 [debug] [Thread-3 (]: On model.igaming_dbt.fact_bet: COMMIT
+[0m12:55:51.140992 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m12:55:51.141286 [debug] [Thread-1 (]: On model.igaming_dbt.daily_game_metrics: COMMIT
+[0m12:55:51.143601 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: COMMIT
+[0m12:55:51.144399 [debug] [Thread-2 (]: Using postgres connection "model.igaming_dbt.example_top5"
+[0m12:55:51.144869 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: COMMIT
+[0m12:55:51.148434 [debug] [Thread-3 (]: SQL status: COMMIT in 0.007 seconds
+[0m12:55:51.151549 [debug] [Thread-3 (]: Applying DROP to: "igaming"."public"."fact_bet__dbt_backup"
+[0m12:55:51.151751 [debug] [Thread-2 (]: SQL status: COMMIT in 0.006 seconds
+[0m12:55:51.151942 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.023 seconds
+[0m12:55:51.152137 [debug] [Thread-1 (]: SQL status: COMMIT in 0.008 seconds
+[0m12:55:51.155145 [debug] [Thread-3 (]: Using postgres connection "model.igaming_dbt.fact_bet"
+[0m12:55:51.156544 [debug] [Thread-2 (]: Applying DROP to: "igaming"."public"."example_top5__dbt_backup"
+[0m12:55:51.158127 [debug] [Thread-4 (]: Using postgres connection "model.igaming_dbt.stg_bets"
+[0m12:55:51.160108 [debug] [Thread-1 (]: Applying DROP to: "igaming"."public"."daily_game_metrics__dbt_backup"
+[0m12:55:51.160617 [debug] [Thread-3 (]: On model.igaming_dbt.fact_bet: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.fact_bet"} */
+drop view if exists "igaming"."public"."fact_bet__dbt_backup" cascade
+[0m12:55:51.161314 [debug] [Thread-2 (]: Using postgres connection "model.igaming_dbt.example_top5"
+[0m12:55:51.161808 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.stg_bets"} */
+alter table "igaming"."public"."stg_bets__dbt_tmp" rename to "stg_bets"
+[0m12:55:51.162439 [debug] [Thread-1 (]: Using postgres connection "model.igaming_dbt.daily_game_metrics"
+[0m12:55:51.163299 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.example_top5"} */
+drop view if exists "igaming"."public"."example_top5__dbt_backup" cascade
+[0m12:55:51.164162 [debug] [Thread-1 (]: On model.igaming_dbt.daily_game_metrics: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.daily_game_metrics"} */
+drop view if exists "igaming"."public"."daily_game_metrics__dbt_backup" cascade
+[0m12:55:51.164370 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m12:55:51.164573 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.002 seconds
+[0m12:55:51.165761 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.000 seconds
+[0m12:55:51.166550 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: COMMIT
+[0m12:55:51.166793 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.002 seconds
+[0m12:55:51.168116 [debug] [Thread-3 (]: On model.igaming_dbt.fact_bet: Close
+[0m12:55:51.169022 [debug] [Thread-1 (]: On model.igaming_dbt.daily_game_metrics: Close
+[0m12:55:51.169501 [debug] [Thread-4 (]: Using postgres connection "model.igaming_dbt.stg_bets"
+[0m12:55:51.170393 [debug] [Thread-2 (]: On model.igaming_dbt.example_top5: Close
+[0m12:55:51.171906 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b71891f8b30>]}
+[0m12:55:51.172104 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b718451e780>]}
+[0m12:55:51.172383 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: COMMIT
+[0m12:55:51.172960 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b718568ad80>]}
+[0m12:55:51.174714 [info ] [Thread-3 (]: 3 of 4 OK created sql view model public.fact_bet ............................... [[32mCREATE VIEW[0m in 0.12s]
+[0m12:55:51.175396 [info ] [Thread-1 (]: 1 of 4 OK created sql view model public.daily_game_metrics ..................... [[32mCREATE VIEW[0m in 0.12s]
+[0m12:55:51.176345 [info ] [Thread-2 (]: 2 of 4 OK created sql view model public.example_top5 ........................... [[32mCREATE VIEW[0m in 0.12s]
+[0m12:55:51.176920 [debug] [Thread-3 (]: Finished running node model.igaming_dbt.fact_bet
+[0m12:55:51.177285 [debug] [Thread-4 (]: SQL status: COMMIT in 0.001 seconds
+[0m12:55:51.177662 [debug] [Thread-1 (]: Finished running node model.igaming_dbt.daily_game_metrics
+[0m12:55:51.178197 [debug] [Thread-2 (]: Finished running node model.igaming_dbt.example_top5
+[0m12:55:51.179977 [debug] [Thread-4 (]: Applying DROP to: "igaming"."public"."stg_bets__dbt_backup"
+[0m12:55:51.181372 [debug] [Thread-4 (]: Using postgres connection "model.igaming_dbt.stg_bets"
+[0m12:55:51.181879 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: /* {"app": "dbt", "dbt_version": "1.9.0", "profile_name": "igaming", "target_name": "dev_postgres", "node_id": "model.igaming_dbt.stg_bets"} */
+drop view if exists "igaming"."public"."stg_bets__dbt_backup" cascade
+[0m12:55:51.184974 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m12:55:51.185899 [debug] [Thread-4 (]: On model.igaming_dbt.stg_bets: Close
+[0m12:55:51.186449 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'efef72ea-5534-46b6-9577-55fe73cc4468', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b7186be3bc0>]}
+[0m12:55:51.187055 [info ] [Thread-4 (]: 4 of 4 OK created sql view model public.stg_bets ............................... [[32mCREATE VIEW[0m in 0.13s]
+[0m12:55:51.187660 [debug] [Thread-4 (]: Finished running node model.igaming_dbt.stg_bets
+[0m12:55:51.188966 [debug] [MainThread]: Using postgres connection "master"
+[0m12:55:51.189431 [debug] [MainThread]: On master: BEGIN
+[0m12:55:51.189915 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m12:55:51.193795 [debug] [MainThread]: SQL status: BEGIN in 0.004 seconds
+[0m12:55:51.194288 [debug] [MainThread]: On master: COMMIT
+[0m12:55:51.194783 [debug] [MainThread]: Using postgres connection "master"
+[0m12:55:51.195226 [debug] [MainThread]: On master: COMMIT
+[0m12:55:51.195801 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m12:55:51.196246 [debug] [MainThread]: On master: Close
+[0m12:55:51.196769 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m12:55:51.197204 [debug] [MainThread]: Connection 'model.igaming_dbt.daily_game_metrics' was properly closed.
+[0m12:55:51.197686 [debug] [MainThread]: Connection 'model.igaming_dbt.example_top5' was properly closed.
+[0m12:55:51.198166 [debug] [MainThread]: Connection 'model.igaming_dbt.fact_bet' was properly closed.
+[0m12:55:51.198627 [debug] [MainThread]: Connection 'model.igaming_dbt.stg_bets' was properly closed.
+[0m12:55:51.199147 [info ] [MainThread]: 
+[0m12:55:51.199675 [info ] [MainThread]: Finished running 4 view models in 0 hours 0 minutes and 0.25 seconds (0.25s).
+[0m12:55:51.200514 [debug] [MainThread]: Command end result
+[0m12:55:51.215356 [debug] [MainThread]: Wrote artifact WritableManifest to /mnt/c/Users/Waslap/Documents/Repos/igaming-demo/transformations/dbt_project/target/manifest.json
+[0m12:55:51.217922 [debug] [MainThread]: Wrote artifact SemanticManifest to /mnt/c/Users/Waslap/Documents/Repos/igaming-demo/transformations/dbt_project/target/semantic_manifest.json
+[0m12:55:51.222324 [debug] [MainThread]: Wrote artifact RunExecutionResult to /mnt/c/Users/Waslap/Documents/Repos/igaming-demo/transformations/dbt_project/target/run_results.json
+[0m12:55:51.222821 [info ] [MainThread]: 
+[0m12:55:51.223338 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m12:55:51.223851 [info ] [MainThread]: 
+[0m12:55:51.224350 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m12:55:51.234212 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.79969513, "process_in_blocks": "83488", "process_kernel_time": 0.303731, "process_mem_max_rss": "115268", "process_out_blocks": "0", "process_user_time": 1.01105}
+[0m12:55:51.234937 [debug] [MainThread]: Command `dbt run` succeeded at 12:55:51.234846 after 0.80 seconds
+[0m12:55:51.235503 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b71891a1220>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b71891fa1b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b71877d22a0>]}
+[0m12:55:51.236029 [debug] [MainThread]: Flushing usage events
+[0m12:55:52.540568 [debug] [MainThread]: An error was encountered while trying to flush usage events
