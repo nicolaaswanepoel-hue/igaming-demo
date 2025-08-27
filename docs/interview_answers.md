@@ -493,6 +493,19 @@ Cons: More joins → higher latency; analysts face complexity.
 - **Light snowflake** where hierarchy is shared broadly (e.g., `dim_country` referenced by many facts; `dim_provider` snowflaked from `dim_game`).  
 - For **detailed player journey**, create a **wide event table** (append-only, with partitioning) alongside the fact table: analysts can drill down without harming BI marts.
 
+```
+For iGaming analytics, a star schema is typically best for performance and usability. Dimensions are denormalized (e.g., game, player, campaign) so BI tools can slice KPIs quickly with minimal joins. This makes daily operational reporting, regulator packs, and dashboards much faster and simpler for analysts. A snowflake schema, by contrast, normalizes hierarchies (e.g., splitting provider or country into separate tables). That reduces duplication and helps manage shared hierarchies, but increases join complexity and query latency under load.
+
+Because the business needs both speed and governance, a hybrid approach is most effective: core marts (bets, payments, bonuses) are modeled in a star form for KPI consistency, while certain shared hierarchies (e.g., regulator, game provider) can be lightly snowflaked for maintainability.
+
+To satisfy the second requirement—supporting both aggregated reporting and detailed player journey analysis—the design deliberately has two “lanes” that share the same conformed dimensions:
+
+- Aggregated reporting lane: curated “Gold” fact tables and marts (e.g., daily game metrics, lifetime value) structured in a star schema. These are optimized for bursty dashboards, regulator snapshots, and simple KPI reporting.
+
+- Player journey lane: an append-only, event-oriented table that records every interaction (bets, deposits, logins, bonus grants, etc.) tied back to the same surrogate keys as the marts. This provides a detailed chronological view of a player’s journey, supporting session analysis, funnels, and risk detection.
+
+By keeping both lanes aligned on the same surrogate keys and conformed dimensions, analysts and business users can drill from a high-level KPI down to the exact sequence of player events that produced it. The marts deliver speed and consistency, while the event-level tables deliver depth and behavioral insight—together meeting both executive reporting and advanced analytics needs without forcing one design to serve both extremes.
+```
 ---
 
 ### 3) ETL vs ELT in the cloud – and what to use here
