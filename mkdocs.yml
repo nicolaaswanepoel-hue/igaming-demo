@@ -29,4 +29,5 @@ nav:
   - Architecture: architecture.md
   - Quickstart: quickstart.md
   - Local Dev: local.md
+  - Datasets: datasets.md
   - FAQ: faq.md

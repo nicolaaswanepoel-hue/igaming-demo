@@ -9,7 +9,7 @@ An end-to-end, **streaming data platform**:
 - 📊 **Metabase** → dashboards on top
 
 ## Quick links
-- Repo: [GitHub]({{ config.repo_url }})
+- Repo: [GitHub](https://github.com/nicolaaswanepoel-hue/igaming-demo)
 - Start everything: `docker compose up -d`
 - One-shot pipeline: `./ingestion/kickoff_stream.sh`
 
