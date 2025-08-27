@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_bets
+    description: "Typed staging for raw bets"
+    columns:
+      - name: bet_id
+      - name: player_id
+      - name: game_id
+      - name: placed_at
+      - name: stake
+      - name: odds
+      - name: status
+      - name: actual_win
+
+  - name: daily_game_metrics
+    description: "Daily metrics by game: bets, wins, losses, handle, GGR, win_rate"
+    columns:
+      - name: day
+      - name: game_id
+      - name: bets
+      - name: wins
+      - name: losses
+      - name: handle
+      - name: ggr
+      - name: win_rate

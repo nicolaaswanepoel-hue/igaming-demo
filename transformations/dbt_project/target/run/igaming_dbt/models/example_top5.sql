@@ -1,4 +1,9 @@
--- Top 5 players by total bet in last 30 days per game_type (joins games)
+
+  create view "igaming"."public"."example_top5__dbt_tmp"
+    
+    
+  as (
+    -- Top 5 players by total bet in last 30 days per game_type (joins games)
 with last_30 as (
   select b.player_id, g.game_type, sum(b.stake) total_bet
   from public.bets b
@@ -11,3 +16,4 @@ ranked as (
   from last_30
 )
 select * from ranked where rn <= 5 order by game_type, total_bet desc
+  );

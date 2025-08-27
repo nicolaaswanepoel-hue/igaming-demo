@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: igaming
+    description: "Raw igaming tables in Postgres"
+    database: igaming
+    schema: public
+    tables:
+      - name: bets
+      - name: players
+      - name: games
