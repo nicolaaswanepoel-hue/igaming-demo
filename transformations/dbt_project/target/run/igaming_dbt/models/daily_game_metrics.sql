@@ -5,12 +5,12 @@
   as (
     with src as (
   select
-    cast(bet_time as timestamp)               as placed_at,
-    game_id::integer                          as game_id,
-    player_id::integer                        as player_id,
-    stake::double precision                   as stake,
-    actual_win::double precision              as actual_win,
-    lower(status)                             as status
+    placed_at,                               -- unified timestamp from stg_bets
+    game_id,
+    player_id,
+    stake::double precision       as stake,
+    actual_win::double precision  as actual_win,
+    lower(status)                 as status
   from stg_bets
 )
 select
