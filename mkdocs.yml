@@ -39,6 +39,7 @@ extra_javascript:
 
 nav:
   - Overview: index.md
+  - Interview Answers: interview_answers.md
   - Architecture: architecture.md
   - Quickstart: quickstart.md
   - Local Dev: local.md
