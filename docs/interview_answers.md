@@ -14,46 +14,47 @@ This write-up proposes a modern, cost-efficient, multi-cloud capable data platfo
 - **Trust**: Strong governance, PII protection, auditability, data contracts
 
 ### High-level Architecture
-
+**Zoom page to see details**
 ```mermaid
 flowchart LR
+
   subgraph Sources
-    SQL[(SQL Server<br/>OLTP)]
-    KAFKA[(Kafka Topics<br/>bets, results, logins)]
-    FILES[(File Drops<br/>CSV/JSON)]
+    SQL["SQL Server OLTP"]
+    KAFKA["Kafka topics: bets, results, logins"]
+    FILES["File drops: CSV, JSON"]
   end
 
   subgraph Ingest
-    DMS[CDC Connector<br/>(Debezium/Datastream/DMS)]
-    STRM[Streaming ETL<br/>(Dataflow/Spark/KDA/ASA)]
-    LAND[Object Store Landing<br/>GCS/S3/ADLS]
+    DMS["CDC connector: Debezium / Datastream / DMS"]
+    STRM["Streaming ETL: Dataflow / Spark / KDA / ASA"]
+    LAND["Landing: GCS / S3 / ADLS"]
   end
 
   subgraph Lakehouse
-    BRONZE[(Bronze<br/>raw, append-only)]
-    SILVER[(Silver<br/>cleaned, conformed)]
-    GOLD[(Gold<br/>curated marts)]
-    CATALOG[(Unified Metastore<br/>Glue/Purview/Dataplex)]
-    TABLEFMT[(Table Format<br/>Delta/Iceberg/Hudi)]
+    BRONZE["Bronze: raw, append-only"]
+    SILVER["Silver: cleaned, conformed"]
+    GOLD["Gold: curated marts"]
+    CATALOG["Unified metastore: Glue / Purview / Dataplex"]
+    TABLEFMT["Table format: Delta / Iceberg / Hudi"]
   end
 
-  subgraph Warehouse & Compute
-    WH[(BigQuery/Redshift/Synapse)]
-    DBT[dbt Core<br/>ELT + metrics]
-    FEAT[(Feature Store)]
+  subgraph Warehouse_and_Compute
+    WH["Warehouse: BigQuery / Redshift / Synapse"]
+    DBT["dbt Core: ELT and metrics"]
+    FEAT["Feature store"]
   end
 
   subgraph Serving
-    BI[BI: Looker/QuickSight/Power BI/Metabase]
-    API[(Low-latency APIs<br/>cached views/materializations)]
+    BI["BI: Looker, QuickSight, Power BI, Metabase"]
+    API["Low-latency APIs via cached views or materializations"]
   end
 
-  subgraph Governance & Ops
-    ORCH[Orchestration<br/>(Airflow/ADF/Step Functions)]
-    DCAT[Data Catalog + Lineage]
-    SEC[PII Vault + KMS + DLP]
-    SCHEMA[Schema Registry + Data Contracts]
-    OBS[Monitoring + Cost<br/>(FinOps)]
+  subgraph Governance_and_Ops
+    ORCH["Orchestration: Airflow / ADF / Step Functions"]
+    DCAT["Data catalog and lineage"]
+    SEC["PII vault, KMS, DLP"]
+    SCHEMA["Schema registry and data contracts"]
+    OBS["Monitoring and FinOps"]
   end
 
   SQL --> DMS --> LAND
@@ -70,6 +71,7 @@ flowchart LR
   CATALOG --- SILVER
   CATALOG --- GOLD
   TABLEFMT --- BRONZE
+
   ORCH --> OBS
   SEC --- LAND
   SEC --- WH
