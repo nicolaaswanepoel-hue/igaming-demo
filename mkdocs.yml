@@ -1,13 +1,32 @@
-site_name: iGaming Data Platform Starter
+site_name: iGaming Demo
+site_description: "End-to-end streaming → lakehouse → warehouse → BI demo"
+site_url: https://nicolaaswanepoel-hue.github.io/igaming-demo/
+repo_url: https://github.com/nicolaaswanepoel-hue/igaming-demo
 theme:
   name: material
   features:
-    - navigation.tabs
+    - navigation.instant
     - navigation.sections
     - content.code.copy
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - attr_list
+plugins:
+  - search
+  - mermaid2    # enables mermaid diagrams
 nav:
-  - Home: index.md
+  - Overview: index.md
   - Architecture: architecture.md
-  - Datasets: datasets.md
   - Quickstart: quickstart.md
-  - Local Demo: local.md
+  - Local Dev: local.md
+  - FAQ: faq.md
