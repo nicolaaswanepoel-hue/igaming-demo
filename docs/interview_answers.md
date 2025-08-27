@@ -493,19 +493,18 @@ Cons: More joins → higher latency; analysts face complexity.
 - **Light snowflake** where hierarchy is shared broadly (e.g., `dim_country` referenced by many facts; `dim_provider` snowflaked from `dim_game`).  
 - For **detailed player journey**, create a **wide event table** (append-only, with partitioning) alongside the fact table: analysts can drill down without harming BI marts.
 
-```
+**Detail**
 For iGaming analytics, a star schema is typically best for performance and usability. Dimensions are denormalized (e.g., game, player, campaign) so BI tools can slice KPIs quickly with minimal joins. This makes daily operational reporting, regulator packs, and dashboards much faster and simpler for analysts. A snowflake schema, by contrast, normalizes hierarchies (e.g., splitting provider or country into separate tables). That reduces duplication and helps manage shared hierarchies, but increases join complexity and query latency under load.
 
 Because the business needs both speed and governance, a hybrid approach is most effective: core marts (bets, payments, bonuses) are modeled in a star form for KPI consistency, while certain shared hierarchies (e.g., regulator, game provider) can be lightly snowflaked for maintainability.
 
 To satisfy the second requirement—supporting both aggregated reporting and detailed player journey analysis—the design deliberately has two “lanes” that share the same conformed dimensions:
 
-- Aggregated reporting lane: curated “Gold” fact tables and marts (e.g., daily game metrics, lifetime value) structured in a star schema. These are optimized for bursty dashboards, regulator snapshots, and simple KPI reporting.
+- **Aggregated reporting lane**: curated “Gold” fact tables and marts (e.g., daily game metrics, lifetime value) structured in a star schema. These are optimized for bursty dashboards, regulator snapshots, and simple KPI reporting.
 
-- Player journey lane: an append-only, event-oriented table that records every interaction (bets, deposits, logins, bonus grants, etc.) tied back to the same surrogate keys as the marts. This provides a detailed chronological view of a player’s journey, supporting session analysis, funnels, and risk detection.
+- **Player journey lane**: an append-only, event-oriented table that records every interaction (bets, deposits, logins, bonus grants, etc.) tied back to the same surrogate keys as the marts. This provides a detailed chronological view of a player’s journey, supporting session analysis, funnels, and risk detection.
 
 By keeping both lanes aligned on the same surrogate keys and conformed dimensions, analysts and business users can drill from a high-level KPI down to the exact sequence of player events that produced it. The marts deliver speed and consistency, while the event-level tables deliver depth and behavioral insight—together meeting both executive reporting and advanced analytics needs without forcing one design to serve both extremes.
-```
 ---
 
 ### 3) ETL vs ELT in the cloud – and what to use here
@@ -524,25 +523,24 @@ By keeping both lanes aligned on the same surrogate keys and conformed dimension
   - This keeps throughput high during 5× spikes and minimizes transform bottlenecks.
 
 **detailed explanation of thought process**
-```
-What’s the difference?
+**What’s the difference?**
 
-ETL (Extract → Transform → Load): Data is cleaned/transformed before it enters shared storage/warehouse. Good for strict data-minimization, stable outputs, and keeping sensitive fields out of broad environments. Trade-off: more upfront engineering, slower iteration.
+**ETL (Extract → Transform → Load)**: Data is cleaned/transformed before it enters shared storage/warehouse. Good for strict data-minimization, stable outputs, and keeping sensitive fields out of broad environments. Trade-off: more upfront engineering, slower iteration.
 
-ELT (Extract → Load → Transform): Land data quickly into cheap object storage/warehouse, then transform with elastic, serverless compute (e.g., dbt + warehouse). Great for speed, scale, schema evolution, and cost control. Trade-off: requires strong governance (RBAC, masking, DLP) because raw data lands first.
+**ELT (Extract → Load → Transform)**: Land data quickly into cheap object storage/warehouse, then transform with elastic, serverless compute (e.g., dbt + warehouse). Great for speed, scale, schema evolution, and cost control. Trade-off: requires strong governance (RBAC, masking, DLP) because raw data lands first.
 
-Cloud-specific context
+**Cloud-specific context**
 
 Object storage + serverless compute makes ELT the default for cost/scale/agility.
 ETL still matters when regulations or risk demand pre-load controls (tokenize, encrypt, drop fields) to avoid broad exposure.
 A pragmatic design often blends both: ETL at the “trust boundary”, then ELT for modeling and marts.
 
-My recommendation for the two sources in scope
+**My recommendation for the two sources in scope**
 
 Sensitive player data from SQL Server (accounts, payments, PII) → ETL-leaning pipeline
-Why: Regulatory and privacy risk (PII, RG/AML). We minimize exposure by transforming before broad landing.
+**Why**: Regulatory and privacy risk (PII, RG/AML). We minimize exposure by transforming before broad landing.
 
-How:
+**How**:
 
 Use CDC/replication from SQL Server.
 Tokenize/hash player identifiers and encrypt sensitive fields in-flight/at ingest.
@@ -551,9 +549,9 @@ After that protection step, proceed with ELT in the warehouse/lake for modeling 
 Result: Satisfies data-minimization and auditability while still leveraging cloud ELT for speed.
 
 Game data from file exports / streaming events (CSV/JSON, Kafka providers) → ELT-first
-Why: High volume, semi-structured, frequent schema tweaks; needs rapid ingestion and scalable transforms.
+**Why**: High volume, semi-structured, frequent schema tweaks; needs rapid ingestion and scalable transforms.
 
-How:
+**How**:
 
 Land raw quickly in object storage (partitioned by date/hour).
 Enforce data contracts and schema validation (schema registry/tests) on load to keep quality high without blocking ingestion.
@@ -561,13 +559,12 @@ Use dbt/warehouse for incremental ELT into Silver/Gold (typing, conforming, metr
 Add materialized views/caches for hot aggregates and autoscale to absorb 5× event spikes.
 Result: Maximizes agility and cost-efficiency, with governance handled by contracts, lineage, and RBAC.
 
-Bottom line
+**Bottom line**
 
 Player PII (SQL Server): ETL at the boundary (tokenize/encrypt/suppress) → then ELT for modeling.
 
 Game/event files: ELT-first (land fast, validate, transform in warehouse).
 This split gives BetMatrix the control regulators expect and the velocity the business needs.
-```
 
 ---
 
