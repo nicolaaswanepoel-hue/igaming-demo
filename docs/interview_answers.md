@@ -505,6 +505,7 @@ To satisfy the second requirement—supporting both aggregated reporting and det
 - **Player journey lane**: an append-only, event-oriented table that records every interaction (bets, deposits, logins, bonus grants, etc.) tied back to the same surrogate keys as the marts. This provides a detailed chronological view of a player’s journey, supporting session analysis, funnels, and risk detection.
 
 By keeping both lanes aligned on the same surrogate keys and conformed dimensions, analysts and business users can drill from a high-level KPI down to the exact sequence of player events that produced it. The marts deliver speed and consistency, while the event-level tables deliver depth and behavioral insight—together meeting both executive reporting and advanced analytics needs without forcing one design to serve both extremes.
+
 ---
 
 ### 3) ETL vs ELT in the cloud – and what to use here
