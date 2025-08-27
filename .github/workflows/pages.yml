@@ -1,3 +1,4 @@
+# .github/workflows/pages.yml
 name: Deploy MkDocs site
 
 on:
@@ -25,6 +26,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
+
+      - name: Install MkDocs + theme
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material
+
+      # If you kept mermaid client-side (recommended), no plugin needed.
+      # If you chose the mermaid2 plugin route instead, add:
+      # pip install mkdocs-mermaid2-plugin
 
       - name: Build site
         run: mkdocs build --strict
